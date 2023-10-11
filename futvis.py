@@ -17,6 +17,12 @@ def load_data(path='src/data.csv'):
     return df, df_positional
 
 @st.cache_data
+def load_video(path='src/video.mp4'):
+    video_file = open('src/video.mp4', 'rb') 
+    video_bytes = video_file.read() 
+    return video_bytes
+
+@st.cache_data
 def get_position_vis(df):
     return vs.juego_de_posicion(df)
 
@@ -128,6 +134,4 @@ st.pyplot(get_pos_by_min(df_pos))
 st.divider()
 st.write('### Match video')
 
-video_file = open('src/video.mp4', 'rb') 
-video_bytes = video_file.read() 
-st.video(video_bytes) 
+st.video(load_video()) 
